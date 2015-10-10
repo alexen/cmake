@@ -15,10 +15,6 @@
 
 set(GTEST_ROOT "${GMOCK_ROOT}/gtest")
 
-message(STATUS "GMOCK_ROOT=${GMOCK_ROOT}")
-message(STATUS "GTEST_ROOT=${GTEST_ROOT}")
-
-
 if(NOT GMOCK_BUILD)
     set(GMOCK_BUILD ${GMOCK_ROOT})
 endif()
