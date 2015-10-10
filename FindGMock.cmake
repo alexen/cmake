@@ -1,7 +1,7 @@
 # FindGMock.cmake - Try to find gmock and gtest libraries
 #
 # Variables you must try to specify:
-#   GMOCK_ROOT - path to gmock source or install direcroty (/usr/local by default)
+#   GMOCK_ROOT - path to gmock source or install direcroty
 #   GMOCK_BUILD - path to gmock built libraries directory (GMOCK_ROOT by default)
 #   GTEST_ROOT - path to gtest source or install direcroty (${GMOCK_ROOT}/gtest by default)
 #   GTEST_BUILD - path to gtest built libraries directory (${GMOCK_BUILD}/gtest by default)
@@ -13,8 +13,11 @@
 #   GTEST_LIBRARIES - both gtest libraries: libgtest.a and libgtest_main.a
 #
 
-set(GMOCK_ROOT ${GMOCK_ROOT} "/usr/local")
-set(GTEST_ROOT ${GTEST_ROOT}" ${GMOCK_ROOT}/gtest")
+set(GTEST_ROOT "${GMOCK_ROOT}/gtest")
+
+message(STATUS "GMOCK_ROOT=${GMOCK_ROOT}")
+message(STATUS "GTEST_ROOT=${GTEST_ROOT}")
+
 
 if(NOT GMOCK_BUILD)
     set(GMOCK_BUILD ${GMOCK_ROOT})

@@ -1,15 +1,13 @@
 # FindGTest.cmake - Try to find gtest libraries
 #
 # Variables you must try to specify:
-#   GTEST_ROOT - path to gtest source or install direcroty (/usr/local by default)
+#   GTEST_ROOT - path to gtest source or install direcroty
 #   GTEST_BUILD - path to gtest built libraries directory (GTEST_ROOT by default)
 #
 # Once done this will define
 #   GTEST_INCLUDE_DIRS - gtest include directory
 #   GTEST_LIBRARIES - both gtest libraries: libgtest.a and libgtest_main.a
 #
-
-set(GTEST_ROOT ${GTEST_ROOT} "/usr/local")
 
 find_path(GTEST_INCLUDE_DIR
     gtest/gtest.h
