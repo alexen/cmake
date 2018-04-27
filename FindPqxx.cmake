@@ -11,28 +11,25 @@
 #     Pqxx_LIBRARIES     - List of libraries which was found
 #
 
-find_package(PkgConfig)
-pkg_check_modules(PC_Pqxx QUIET Pqxx)
-
-find_path(Pqxx_INCLUDE_DIRS
-     NAMES pqxx
-     PATHS ${PC_Pqxx_INCLUDE_DIRS}
+find_path(Pqxx_INCLUDES
+     NAMES     pqxx/connection pqxx/transaction
+     DOC       "pqxx include directory"
 )
 
-find_library(Pqxx_LIBRARIES
-     NAMES pqxx
-     PATHS ${PC_Pqxx_LIBRARY_DIRS}
+find_library(Pqxx_LIBS
+     NAMES     pqxx
+     DOC       "pqxx library"
 )
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Pqxx
-     FOUND_VAR Pqxx_FOUND
-     REQUIRED_VARS
-          Pqxx_INCLUDE_DIRS
-          Pqxx_LIBRARIES
+     FOUND_VAR      Pqxx_FOUND
+     REQUIRED_VARS  Pqxx_LIBS Pqxx_INCLUDES
 )
 
-mark_as_advanced(
-     Pqxx_INCLUDE_DIRS
-     Pqxx_LIBRARIES
-)
+if(Pqxx_FOUND)
+     set(Pqxx_INCLUDE_DIRS ${Pqxx_INCLUDES})
+     set(Pqxx_LIBRARIES ${Pqxx_LIBS})
+endif()
+
+mark_as_advanced(Pqxx_INCLUDES Pqxx_LIBS)
